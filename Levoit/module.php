@@ -179,4 +179,19 @@ declare(strict_types=1);
         {
             return get_class($this);
         }
+
+        /**
+         * logging
+         * @param null $sender
+         * @param mixed $message
+         */
+        protected function _log($sender = NULL, $message = '')
+        {
+            if ($this->ReadPropertyBoolean('log')) {
+                if (is_array($message)) {
+                    $message = json_encode($message);
+                }
+                IPS_LogMessage($sender, $message);
+            }
+        }
     }
