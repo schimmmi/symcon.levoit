@@ -122,6 +122,8 @@ declare(strict_types=1);
             // force login every request
             $this->Login();
 
+            $devices = $this->Api('/vold/user/devices');
+
         }
 
         /**
@@ -176,6 +178,41 @@ declare(strict_types=1);
                     'Error: The email address or password of your veSync account is invalid!');
                 exit(-1);
             }
+        }
+
+        /**
+         * API to veSync
+         * @param string $request
+         * @return mixed
+         */
+        public function Api(string $request)
+        {
+            // build request url
+            $request_url = 'https://' . $this->base_url . $request;
+
+            // curl options
+            $curlOptions = [
+                CURLOPT_TIMEOUT => 10,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_HTTPHEADER => [
+                    'tk:' . $this->token,
+                    'accountID:' - $this->account_id,
+                    'Content-Type: application/json',
+                    'Connection: Keep-Alive',
+                ]
+            ];
+
+            // call api
+            $ch = curl_init($request_url);
+            curl_setopt_array($ch, $curlOptions);
+            $response = curl_exec($ch);
+            curl_close($ch);
+
+            $this->_log($this->module_name, sprintf(
+                'Info: The API response is %s', $response));
+
+            // return result
+            return json_decode($response, true);
         }
 
         /**
