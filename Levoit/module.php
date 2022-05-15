@@ -194,10 +194,10 @@ declare(strict_types=1);
             $curlOptions = [
                 CURLOPT_TIMEOUT => 10,
                 CURLOPT_RETURNTRANSFER => true,
-                CURLOPT_HTTPHEADER => json_encode([
+                CURLOPT_HTTPHEADER => [
                     'tk' => $this->token,
                     'accountId' => $this->account_id
-                ])
+                ]
             ];
 
             // call api
