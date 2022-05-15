@@ -159,10 +159,10 @@ declare(strict_types=1);
             // extract token
             $json_response = json_decode($response, true);
             $this->_log($this->module_name, sprintf(
-                'Info: The login response is %s...', $response));
+                'Info: The login response is %s', $response));
 
-            $this->token = isset($json_response['token']) ? $json_response['token'] : false;
-            $this->account_id = isset($json_response['accountID']) ? $json_response['accountID'] : false;
+            $this->token = $json_response['tk'] ?? '';
+            $this->account_id = $json_response['accountID'] ?? '';
 
             // save valid token
             if ($this->token and $this->account_id) {
