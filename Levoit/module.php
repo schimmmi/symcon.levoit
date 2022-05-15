@@ -197,9 +197,10 @@ declare(strict_types=1);
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => json_encode([
                     'account' => $this->email,
-                    'password' => md5($this->password),
-                    'devToken' => '',
-                    'method' => 'devices'
+                    'token' => $this->token,
+                    'method' => 'devices',
+                    'pageNo' => '1',
+                    'pagheSize' => '100'
                 ]),
                 CURLOPT_HTTPHEADER => [
                     'tk' => $this->token,
