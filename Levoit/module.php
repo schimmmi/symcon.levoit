@@ -122,7 +122,7 @@ declare(strict_types=1);
             // force login every request
             $this->Login();
 
-            $devices = $this->Api('/vold/user/devices');
+            $devices = $this->Api('/cloud/v1/deviceManaged/devices');
 
         }
 
@@ -194,6 +194,7 @@ declare(strict_types=1);
             $curlOptions = [
                 CURLOPT_TIMEOUT => 10,
                 CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_POST => true,
                 CURLOPT_HTTPHEADER => [
                     'tk' => $this->token,
                     'accountId' => $this->account_id
