@@ -1,2 +1,2 @@
 # symcon.levoit
-veSync Levoit Air Purifiers Moduel for IP-Symcon
+veSync Levoit Air Purifiers Module for IP-Symcon
