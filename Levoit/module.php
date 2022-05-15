@@ -200,7 +200,7 @@ declare(strict_types=1);
                     'token' => $this->token,
                     'method' => 'devices',
                     'pageNo' => '1',
-                    'pagheSize' => '100'
+                    'pageSize' => '100'
                 ]),
                 CURLOPT_HTTPHEADER => [
                     'tk' => $this->token,
