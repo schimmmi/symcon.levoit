@@ -142,7 +142,7 @@ declare(strict_types=1);
                 CURLOPT_POSTFIELDS => json_encode([
                     'email' => $this->email,
                     'password' => md5($this->password),
-                    'devToken' => utf8_encode(''),
+                    'devToken' => '',
                     'userType' => '1',
                     'method' => 'login'
                 ]),
