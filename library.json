@@ -1,0 +1,12 @@
+{
+    "id": "{37E72133-76F0-A35D-5824-442150FE866C}",
+    "name": "Levoit",
+    "author": "Juergen Schilling",
+    "url": "https://github.com/schimmmi/symcon.levoit",
+    "compatibility": {
+        "version": "5.5"
+    },
+    "version": "1.0",
+    "build": 0,
+    "date": 0
+}

@@ -1,0 +1,17 @@
+{
+    "id": "{7AB4A49F-1559-2A90-F22D-3A9589BF99FE}",
+    "name": "Levoit",
+    "type": 3,
+    "vendor": "veSync",
+    "aliases": [],
+    "parentRequirements": [],
+    "childRequirements": [],
+    "implemented": [],
+    "prefix": "LEVOIT",
+    "url": "",
+    "description": "",
+    "minimumCoreVersion": "",
+    "title": "",
+    "version": "",
+    "author": ""
+}
