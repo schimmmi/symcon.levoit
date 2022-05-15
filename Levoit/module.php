@@ -134,7 +134,7 @@ declare(strict_types=1);
             $this->_log($this->module_name, sprintf('Logging in to veSync account of %s...', $this->email));
 
             // login url
-            $login_url = 'https://' . $this->base_url . '/cloud/v1/user/login';
+            $login_url = 'https://' . $this->base_url . '/vold/user/login';
 
             // curl options
             $curlOptions = [
