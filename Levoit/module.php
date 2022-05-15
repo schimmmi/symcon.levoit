@@ -171,4 +171,12 @@ declare(strict_types=1);
             }
         }
 
+        /**
+         * get prefix by current class name
+         * @return string
+         */
+        protected function _getPrefix()
+        {
+            return get_class($this);
+        }
     }
