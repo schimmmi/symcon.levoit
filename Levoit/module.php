@@ -196,7 +196,7 @@ declare(strict_types=1);
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_HTTPHEADER => [
                     'tk:' . $this->token,
-                    'accountID:' . $this->account_id,
+                    'accountid:' . $this->account_id,
                     'Content-Type: application/json',
                     'Connection: Keep-Alive',
                 ]
