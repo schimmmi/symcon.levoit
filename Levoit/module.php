@@ -17,8 +17,8 @@ declare(strict_types=1);
 	{
         private string $email;
         private string $password;
-        private string $token;
-        private string $account_id;
+        private $token;
+        private $account_id;
         private string $base_url = "smartapi.vesync.com";
         private string $module_name = "Levoit";
 
@@ -161,8 +161,8 @@ declare(strict_types=1);
             $this->_log($this->module_name, sprintf(
                 'Info: The login response is %s', $response));
 
-            $this->token = $json_response['tk'] ?? '';
-            $this->account_id = $json_response['accountID'] ?? '';
+            $this->token = $json_response['tk'] ?? false;
+            $this->account_id = $json_response['accountID'] ?? false;
 
             // save valid token
             if ($this->token and $this->account_id) {
