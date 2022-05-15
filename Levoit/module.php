@@ -132,7 +132,7 @@ declare(strict_types=1);
             $this->_log($this->module_name, sprintf('Logging in to veSync account of %s...', $this->email));
 
             // login url
-            $login_url = 'https://' . $this->base_url. '/cloud/v1/user/login';
+            $login_url = 'https://' . $this->base_url. '/vold/user/login';
 
             // curl options
             $curlOptions = [
@@ -140,11 +140,9 @@ declare(strict_types=1);
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => json_encode([
-                    'email' => $this->email,
+                    'account' => $this->email,
                     'password' => md5($this->password),
-                    'devToken' => '',
-                    'userType' => '1',
-                    'method' => 'login'
+                    'devToken' => ''
                 ]),
                 CURLOPT_HTTPHEADER => [
                     'Content-Type: application/json',
