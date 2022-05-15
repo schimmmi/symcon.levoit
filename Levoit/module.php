@@ -195,6 +195,12 @@ declare(strict_types=1);
                 CURLOPT_TIMEOUT => 10,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
+                CURLOPT_POSTFIELDS => json_encode([
+                    'account' => $this->email,
+                    'password' => md5($this->password),
+                    'devToken' => '',
+                    'method' => 'devices'
+                ]),
                 CURLOPT_HTTPHEADER => [
                     'tk' => $this->token,
                     'accountId' => $this->account_id
