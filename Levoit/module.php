@@ -40,6 +40,12 @@ declare(strict_types=1);
             $this->RegisterPropertyString('password', '');
             $this->RegisterPropertyInteger('interval', 1); // in minutes
 
+            // register global properties
+            $this->RegisterPropertyBoolean('log', true);
+
+            // register kernel messages
+            $this->RegisterMessage(0, IPS_KERNELMESSAGE);
+
             // register timer
             $this->RegisterTimer('UpdateData',
                 60 * 1000,
