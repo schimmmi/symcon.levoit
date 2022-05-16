@@ -181,6 +181,12 @@ declare(strict_types=1);
             $this->token = $json_response['token'] ?? false;
             $this->account_id = $json_response['accountID'] ?? false;
 
+            $this->_log($this->module_name, sprintf(
+                'Info: Token %s', $this->token));
+
+            $this->_log($this->module_name, sprintf(
+                'Info: accountID %s', $this->account_id));
+
             // save valid token
             if ($this->token and $this->account_id) {
                 $this->SetStatus(102);
