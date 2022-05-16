@@ -178,7 +178,7 @@ declare(strict_types=1);
             // extract token
             $json_response = json_decode($response, true);
 
-            $this->token = $json_response['tk'] ?? false;
+            $this->token = $json_response['token'] ?? false;
             $this->account_id = $json_response['accountID'] ?? false;
 
             // save valid token
