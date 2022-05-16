@@ -122,7 +122,7 @@ declare(strict_types=1);
             // force login every request
             $this->Login();
 
-            $devices = $this->Api('/cloud/v1/deviceManaged/devices');
+            $devices = $this->Api('/cloud/v2/deviceManaged/devices');
 
         }
 
@@ -196,16 +196,23 @@ declare(strict_types=1);
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
                 CURLOPT_POSTFIELDS => json_encode([
-                    'account' => $this->email,
+                    'accept-language' => 'de',
+                    'accountid' => $this->account_id,
                     'token' => $this->token,
+                    'appVersion' => '2.5.1',
                     'method' => 'devices',
                     'pageNo' => '1',
                     'pageSize' => '100'
                 ]),
                 CURLOPT_HTTPHEADER => [
-                    'tk' => $this->token,
-                    'accountId' => $this->account_id
-                ]
+                    'accept-language: de',
+                    "tk: $this->token",
+                    'tz: Europe/Berlin',
+                    "accountId: $this->account_id",
+                    'user-agent: symcon-levoit',
+                    'Content-Type: application/json',
+                    'Connection: Keep-Alive'
+               ]
             ];
 
             // call api
