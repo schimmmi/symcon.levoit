@@ -163,10 +163,11 @@ declare(strict_types=1);
             $response = curl_exec($ch);
             curl_close($ch);
 
-            // extract token
-            $json_response = json_decode($response, true);
             $this->_log($this->module_name, sprintf(
                 'Info: The login response is %s', $response));
+
+            // extract token
+            $json_response = json_decode($response, true);
 
             $this->token = $json_response['tk'] ?? false;
             $this->account_id = $json_response['accountID'] ?? false;
