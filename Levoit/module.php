@@ -136,21 +136,26 @@ declare(strict_types=1);
             // login url
             $login_url = 'https://' . $this->base_url . '/cloud/v1/user/login';
 
+            $json_payload = json_encode([
+                'email' => $this->email,
+                'password' => md5($this->password),
+                'devToken' => '',
+                'userType' => 1,
+                'method' => 'login',
+                'timeZone' => 'Europe/Berlin',
+                'appVersion' => '2.5.1',
+                'acceptLanguage' => 'de'
+            ]);
+
+            $this->_log($this->module_name, sprintf(
+                'Info: The login request is %s', $json_payload));
+
             // curl options
             $curlOptions = [
                 CURLOPT_TIMEOUT => 10,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS => json_encode([
-                    'email' => $this->email,
-                    'password' => md5($this->password),
-                    'devToken' => '',
-                    'userType' => 1,
-                    'method' => 'login',
-                    'timeZone' => 'Europe/Berlin',
-                    'appVersion' => '2.5.1',
-                    'acceptLanguage' => 'de'
-                ]),
+                CURLOPT_POSTFIELDS => $json_payload,
                 CURLOPT_HTTPHEADER => [
                     'Content-Type: application/json',
                     'Connection: Keep-Alive',
