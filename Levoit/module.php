@@ -144,7 +144,9 @@ declare(strict_types=1);
                 'method' => 'login',
                 'timeZone' => 'Europe/Berlin',
                 'appVersion' => '2.5.1',
-                'acceptLanguage' => 'de'
+                'acceptLanguage' => 'de',
+                'token' => '',
+                'traceId' => getdate()
             ]);
 
             $this->_log($this->module_name, sprintf(
