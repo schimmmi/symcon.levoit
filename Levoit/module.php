@@ -205,19 +205,26 @@ declare(strict_types=1);
             // build request url
             $request_url = 'https://' . $this->base_url . $request;
 
+            $json_payload = json_encode([
+                'accountID' => $this->account_id,
+                'token' => $this->token,
+                'devToken' => '',
+                'appVersion' => '2.5.1',
+                'phoneBrand'=> 'SM N9005',
+                'phoneOS' => 'Android',
+                'userType' => 1,
+                'method' => 'devices',
+                'timeZone' => 'Europe/Berlin',
+                'acceptLanguage' => 'de',
+                'traceId' =>  date("M j Y G:i:s")
+            ]);
+
             // curl options
             $curlOptions = [
                 CURLOPT_TIMEOUT => 10,
                 CURLOPT_RETURNTRANSFER => true,
                 CURLOPT_POST => true,
-                CURLOPT_POSTFIELDS => json_encode([
-                    'accept-language' => 'de',
-                    'accountid' => $this->account_id,
-                    'token' => $this->token,
-                    'method' => 'devices',
-                    'pageNo' => '1',
-                    'pageSize' => '100'
-                ]),
+                CURLOPT_POSTFIELDS => $json_payload,
                 CURLOPT_HTTPHEADER => [
                     'accept-language: de',
                     "tk: $this->token",
