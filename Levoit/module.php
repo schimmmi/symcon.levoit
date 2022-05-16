@@ -178,8 +178,12 @@ declare(strict_types=1);
             // extract token
             $json_response = json_decode($response, true);
 
-            $this->token = $json_response['token'] ?? false;
-            $this->account_id = $json_response['accountID'] ?? false;
+            $return_code = $json_response['code'] ?? 1;
+
+            if ($return_code == 0) {
+                $this->token = $json_response['result']['token'] ?? false;
+                $this->account_id = $json_response['result']['accountID'] ?? false;
+            }
 
             $this->_log($this->module_name, sprintf(
                 'Info: Token %s', $this->token));
