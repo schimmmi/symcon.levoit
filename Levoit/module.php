@@ -122,7 +122,7 @@ declare(strict_types=1);
             // force login every request
             $this->Login();
 
-            $devices = $this->Api('/cloud/v2/deviceManaged/devices');
+            $devices = $this->Devices();
 
         }
 
@@ -185,12 +185,6 @@ declare(strict_types=1);
                 $this->account_id = $json_response['result']['accountID'] ?? false;
             }
 
-            $this->_log($this->module_name, sprintf(
-                'Info: Token %s', $this->token));
-
-            $this->_log($this->module_name, sprintf(
-                'Info: accountID %s', $this->account_id));
-
             // save valid token
             if ($this->token and $this->account_id) {
                 $this->SetStatus(102);
@@ -206,14 +200,13 @@ declare(strict_types=1);
         }
 
         /**
-         * API to veSync
-         * @param string $request
-         * @return mixed
+         * Get Devices from veSync API
+         * @return Device list
          */
-        public function Api(string $request)
+        public function Devices()
         {
             // build request url
-            $request_url = 'https://' . $this->base_url . $request;
+            $request_url = 'https://' . $this->base_url . '/cloud/v2/deviceManaged/devices';
 
             $json_payload = json_encode([
                 'accountID' => $this->account_id,
@@ -254,6 +247,12 @@ declare(strict_types=1);
 
             $this->_log($this->module_name, sprintf(
                 'Info: The API response is %s', $response));
+
+            $return_code = $json_response['code'] ?? 1;
+
+            if ($return_code == 0) {
+
+            }
 
             // return result
             return json_decode($response, true);
