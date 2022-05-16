@@ -146,7 +146,7 @@ declare(strict_types=1);
                 'appVersion' => '2.5.1',
                 'acceptLanguage' => 'de',
                 'token' => '',
-                'traceId' =>  date("D M j G:i:s T Y")
+                'traceId' =>  date("M j Y G:i:s")
             ]);
 
             $this->_log($this->module_name, sprintf(
