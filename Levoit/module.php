@@ -248,9 +248,13 @@ declare(strict_types=1);
             $this->_log($this->module_name, sprintf(
                 'Info: The API response is %s', $response));
 
+            // extract token
+            $json_response = json_decode($response, true);
+
             $return_code = $json_response['code'] ?? 1;
 
             if ($return_code == 0) {
+                $this->_log($this->module_name, print_r($json_response, true));
 
             }
 
