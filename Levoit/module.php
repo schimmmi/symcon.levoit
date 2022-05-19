@@ -131,7 +131,7 @@ declare(strict_types=1);
          */
         public function Login()
         {
-            $this->_log($this->module_name, sprintf('Notify: Logging in to veSync account of %s...', $this->email));
+            $this->_log($this->module_name . 'Notify', sprintf('Login to veSync account of %s...', $this->email));
 
             // login url
             $login_url = 'https://' . $this->base_url . '/cloud/v1/user/login';
