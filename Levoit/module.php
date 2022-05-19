@@ -240,7 +240,7 @@ declare(strict_types=1);
             curl_close($ch);
 
             $this->_log($this->module_name, sprintf(
-                'Info: The API response is %s', $response));
+                'Info: Device list %s', $response));
 
             return json_decode($response, true);
         }
