@@ -151,9 +151,6 @@ declare(strict_types=1);
                 'traceId' =>  date("M j Y G:i:s")
             ]);
 
-            $this->_log($this->module_name, sprintf(
-                'Info: The login request is %s', $json_payload));
-
             // curl options
             $curlOptions = [
                 CURLOPT_TIMEOUT => 10,
@@ -171,9 +168,6 @@ declare(strict_types=1);
             curl_setopt_array($ch, $curlOptions);
             $response = curl_exec($ch);
             curl_close($ch);
-
-            $this->_log($this->module_name, sprintf(
-                'Info: The login response is %s', $response));
 
             // extract token
             $json_response = json_decode($response, true);
@@ -248,17 +242,6 @@ declare(strict_types=1);
             $this->_log($this->module_name, sprintf(
                 'Info: The API response is %s', $response));
 
-            // extract token
-            $json_response = json_decode($response, true);
-
-            $return_code = $json_response['code'] ?? 1;
-
-            if ($return_code == 0) {
-                $this->_log($this->module_name, print_r($json_response, true));
-
-            }
-
-            // return result
             return json_decode($response, true);
         }
 
