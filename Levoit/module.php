@@ -131,7 +131,7 @@ declare(strict_types=1);
          */
         public function Login()
         {
-            $this->_log($this->module_name, sprintf('Info: Logging in to veSync account of %s...', $this->email));
+            $this->_log($this->module_name, sprintf('Notify: Logging in to veSync account of %s...', $this->email));
 
             // login url
             $login_url = 'https://' . $this->base_url . '/cloud/v1/user/login';
@@ -185,7 +185,7 @@ declare(strict_types=1);
                 $this->SetBuffer('token', $this->token);
                 $this->SetBuffer('accountID', $this->account_id);
                 $this->_log($this->module_name,
-                    'Info: Login to veSync account succeeded!');
+                    'Success: Login to veSync account succeeded!');
             } // simple error handling
             else {
                 $this->SetStatus(201);
@@ -242,7 +242,7 @@ declare(strict_types=1);
             curl_close($ch);
 
             $this->_log($this->module_name, sprintf(
-                'Info: Device list %s', $response));
+                'Notify: Device list %s', $response));
 
             return json_decode($response, true);
         }
