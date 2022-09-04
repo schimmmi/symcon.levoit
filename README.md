@@ -1,5 +1,6 @@
-# Levoit
-This module adds support for veSync Levoit Air Purifiers to IP-Symcon.
+# Levoit (WORK IN PROGRESS!!!!!)
+This module adds support for veSync Levoit Air Purifiers to IP-Symcon. It is nmot yet finisched. 
+Only the login is working.
 
 The following modules where included within the Levoit repository:
 
